@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    //we are creating a constructor function  and
+    //  there are some function in constructor function  to add elements in object after object creation
+    //This functions are call,apply,bind
+    //By using this functions we can add the object elements after creation of the object
+    
+
+
+    function ConstructFun(name,age){
+        this.name=name;
+        this.age=age;
+
+    }
+
+
+    let Student1=new ConstructFun("Raju",12);
+    let student2=new ConstructFun("Ravi",67);
+    let student3=new ConstructFun("Ravi",67);
+    let student4=new ConstructFun("Ravi",67);
+    let student5=new ConstructFun("Ravi",67);
+    let student6=new ConstructFun("Ravi",67);
+    let student7=new ConstructFun("Ravi",67);
+
+
+    console.log(Student1);
+    console.log(student2);
+    console.log(student3);
+    console.log(student4);
+    console.log(student5);
+    console.log(student6);
+
+
+    //every data types is created from this construcor function and all things in java script are objects
+    let num1=new Number(12); // This is as constuctor function
+    console.log(num1);
+    let str=new String("Hello");
+    console.log(str);
+    // EVERY DATA TYPE WHICH IS CREATED BY USING CONSTRUCTOR FUNCTION IT WILL CREATE IN OBJECT FORM
+    // IT MAY BE PREMITITIVE OR NON-PREMITITIVE 
+    //Output
+    // String {'Hello'}
+    // 0: "H"
+    // 1: "e"
+    // 2: "l"
+    // 3: "l"
+    // 4: "o"
+    // length: 5
+    // [[Prototype]]: String
+    // [[PrimitiveValue]]: "Hello"
+
+    //First we did like this for adding elements in object
+    //Example:
+    let obj={
+        name:"Daya",
+        age:23,
+    }
+    obj.city="hyderabad";
+    obj.state="Telangana";
+    obj["mobile"]="40948477474";
+
+    console.log(obj);
+
+    // In this case if there are less object we usethis methods like using [] and .
+    //but if we have many object and in that we need to change we use it with constructor function
+    let obj1={
+        name:"Daya",
+        age:23,
+    }
+    let obj2={
+        name:"Daya",
+        age:23,
+    }
+    
+    // Like this if we have many objects then we will can not do the above method because it will take long time.
+    //insteed we have this 
+    // ->Call(), apply(),bind()
+
+    //So we will create a constructor function and in that we provide keys and by using call function we add values to each object
+
+    function addingProps(city,state){
+        this.city=city;
+        this.state=state;
+
+    }
+    addingProps.call(obj1,"hyderabad","telanaga");
+    addingProps.call(obj2,"mumbai","maharasta");
+    console.log(obj1);
+    console.log(obj2);
+
+    // Output will be : 
+
+// {name: 'Daya', age: 23, city: 'hyderabad', state: 'Telangana'}
+// age:23
+// city:"hyderabad"
+// name : "Daya"
+// state: "Telangana"
+// [[Prototype]]: Object
+
+
+// and we can also add with apply() function 
+// apply()----------> function 
+
+let abc={
+    name:"daya",
+    age:23
+}
+let abc1={
+    name:"vinay",
+    age:65
+}
+
+// now we are using apply function to add elements in objects
+
+function addingByApply(city,state){
+    this.city=city;
+    this.state=state;
+}
+// addingByApply.apply(object name , "values to pass to function")
+// In this apply method we write the values in side a array []
+//This same more easily readable and this is introduced after the call method 
+addingByApply.apply(abc,["Hyderabad","telangana"]);
+addingByApply.apply(abc1,["nizamabad","telangana"]);
+console.log(abc);
+console.log(abc1);
+
+// Output will be
+// {name: 'Daya', age: 23, city: 'hyderabad', state: 'telanaga'}
+// age: 23
+// city: "hyderabad"
+// name: "Daya"
+// state: "telanaga"
+// [[Prototype]]: Object
+
+
+// --------------------------------------------------
+// And we also have bind() method this bind method will is same like call method only but it will create a saparate function
+// this bind() function store the resulting in a new function
+let xyz={
+    name:"daya",
+    age:23
+}
+let xyz1={
+    name:"rahul",
+    age:65
+}
+function addProperties(city,state){
+    this.city=city;
+    this.state=state;
+
+}
+
+let newFun=addProperties.bind(xyz1,"Armoor","telangana");
+
+//here if we call the same object then elements will not present in that
+//to get added elements we need to use new function 
+// in this case we have created a new function with name as newFun firt we need to call this function 
+newFun();
+//then now we can use xyz
+console.log(xyz1)
+
+
+
+
+
+
+// We can also use this function with methods in which we need to add message and/or we need to pass object elements
+
+function greet(greetingMessage,day){
+    console.log("Hello "+this.name+"!! "+greetingMessage+" and have a great "+day);
+}
+
+//this method is added in to the object for the output with name
+
+let nameFun= {
+    name:"Daya"
+}
+
+greet.call(nameFun,"Welcome","monday");
+
+
+// with this same we can use to apply() and bind() functions
+
+//this will add a the values given to the call function with the object to the greet function
+
+
+
+
+
+
+
+
+</script>
