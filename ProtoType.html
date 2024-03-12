@@ -17,5 +17,86 @@
     //Array
     let arr=[1,2,3,4,5,6];
     console.log(arr);
+    //We get a prototype as [[prototype]] Array[0]-> __proto__: object  -> __proto__:null
+    // every data type which is create is having a prototype and at all data type last prototype will be null and
+    // then object will take null by creating another protoype and then this prototype is taken to build data type 
+
+    let str=new String("hello");
+    console.log(str);
+
+    // 0: "h"
+    // 1: "e"
+    // 2: "l"
+    // 3: "l"
+    // 4: "o"
+    // length: 5
+    // [[Prototype]]: String --> this is a prototype 
+    // [[PrimitiveValue]]: "hello" --> this is a value it will directly assign value if we dirctly give 
+    // to variable without any string varible
+
+    // [[Prototype]]: String -> __proto__:object -->__proto__: null 
+
+    //For Function, array,object,Number and all we have a prototype
+
+    // WE CAN ACCESS THE VALUE OF GRAND GRAND PARENT or PARENT PROTOTYPES BY USING __proto__
+
+    let objAcc={
+        name:"Hi! how are you"
+    }
+    console.log(objAcc.__proto__.__proto__);
+    //OUTPUT: null
+
+
+    //WE CAN CREATE OUR OWN PROTOTYPE BY USING Object.create()
+
+    //HERE we use Capital 'O'
+
+    //LETS SEE HOW WE CREATE
+    // SO WE HAVE LEARNED EVERY DATA TYPE HAS A PROTOTYPE AS OBJECT SO WE ARE GOING TO ASSING TO OBJECT
+
+    let str1=new String("Hello");
+    let str2=new String("World");
+
+   let str3= Object.create(str1);
+   let str4=Object.create(str2);
+   console.log(str3);
+   console.log(str4);
+   
+// String {}
+// [[Prototype]]: String  --> this is str3 taking prototypes of str1 
+// 0: "H"
+// 1: "e"
+// 2: "l"
+// 3: "l"
+// 4: "o"
+// length: 5
+// [[Prototype]]: String --str1
+// [[PrimitiveValue]]: "Hello"
+
+//NOW WE CREATE IT WITH OBJECT
+
+let obj1={
+    name:"goku"
+}
+
+obj2=Object.create(obj1);
+//NOW WE CAN ADD VALUES TO obj2
+obj2.country="india";
+obj2.code="+91";
+console.log(obj2);
+
+//THIS OBJ1 WILL FORM A NEW PROTOTYPE FOR OBJ2 
+// {country: 'india', code: '+91'} ---->obj2 taking prtotype of obj1
+// code: "+91"
+// country: "india"
+// [[Prototype]]: Object   -> obj1
+// name: "goku"
+// [[Prototype]]: Object -> JS default prototype
+
+
+
+
+
+    
     
 </script>
